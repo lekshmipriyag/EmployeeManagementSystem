@@ -1,0 +1,6 @@
+com\EmployeeManagement\controller\RegisterControllerTests.class
+com\EmployeeManagement\service\EmployeeServiceTests.class
+com\EmployeeManagement\service\DepartmentServiceTests.class
+com\EmployeeManagement\controller\DepartmentControllerTests.class
+com\EmployeeManagement\controller\EmployeeData.class
+com\EmployeeManagement\EmployeeManagementApplicationTests.class
