@@ -1,0 +1,8 @@
+payment\employeesalary\model\ResponseData.class
+payment\employeesalary\controller\SalaryController.class
+payment\employeesalary\config\SpringFoxConfig.class
+payment\employeesalary\repository\SalaryRepository.class
+payment\employeesalary\EmployeeSalaryApplication.class
+payment\employeesalary\exceptions\SalaryExceptionHandler.class
+payment\employeesalary\model\Salary.class
+payment\employeesalary\service\SalaryService.class
