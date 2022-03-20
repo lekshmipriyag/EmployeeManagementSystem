@@ -1,0 +1,10 @@
+com\EmployeeManagement\controller\RegisterControllerTests.class
+com\EmployeeManagement\service\DepartmentServiceTests.class
+com\EmployeeManagement\controller\DepartmentControllerTests.class
+com\EmployeeManagement\EmployeeManagementApplicationTests.class
+cucumber\TestSteps\StepDefinitionsDepartment.class
+com\EmployeeManagement\service\EmployeeServiceTests.class
+com\EmployeeManagement\controller\EmployeeData.class
+restAssured\EmployeeRestAssured.class
+cucumber\TestSteps\StepDefinitionsEmployee.class
+restAssured\DepartmentRestAssured.class

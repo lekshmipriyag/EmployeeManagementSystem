@@ -6,4 +6,5 @@ LABEL maintainer="Lekshmi Geetha"
 # employee-version3 (docker image name)
 COPY ./target/EmployeeManagementSystem.jar employee-version3.jar
 #entrypoint would tell the docker how to execute the application
-ENTRYPOINT ["java","-jar", "employee-version3.jar"]
+#ENTRYPOINT ["java","-jar", "employee-version3.jar"]
+ENTRYPOINT ["java","-jar","-Dspring.profiles.active=dev", "employee-version3.jar"]

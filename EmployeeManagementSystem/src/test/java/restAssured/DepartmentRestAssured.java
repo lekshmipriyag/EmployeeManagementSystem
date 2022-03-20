@@ -15,7 +15,6 @@ import static org.testng.Assert.assertEquals;
 public class DepartmentRestAssured {
     Logger logger = LoggerFactory.logger(DepartmentRestAssured.class);
 
-
     @BeforeTest
     public void init() {
         RestAssured.baseURI = "http://localhost:8081/department";
@@ -87,7 +86,6 @@ public class DepartmentRestAssured {
         } else {
             assertEquals(response.getStatusCode(), 200);
         }
-
     }
 
     @Test
@@ -120,7 +118,7 @@ public class DepartmentRestAssured {
 
     @Test
     public void deleteDepartmentCase1() {
-        //Searched department ID is not found
+        //delete department
         String departmentName = "Marketing";
         Response response = RestAssured.get(baseURI + "/searchDepartment/" + departmentName);
         int departmentExists = response.getStatusCode();

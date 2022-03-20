@@ -86,7 +86,6 @@ public class StepDefinitionsEmployee {
     public void i_try_to_fetch_all_employee_details() {
         request = RestAssured.given();
         response = request.get("/getAllEmployee/");
-        statusCode = response.getStatusCode();
     }
 
     @Then("returns a valid response")
@@ -99,7 +98,6 @@ public class StepDefinitionsEmployee {
     public void i_try_to_fetch_an_employee_data_based_on_ID() {
         request = RestAssured.given();
         response = request.get("/getEmployee/200");
-        statusCode = response.getStatusCode();
     }
 
     @Then("returns a valid response_employeeID")
@@ -112,7 +110,6 @@ public class StepDefinitionsEmployee {
     public void i_try_to_fetch_an_employee_data_based_on_Name() {
         request = RestAssured.given();
         response = request.get("/searchName/Jeni");
-        statusCode = response.getStatusCode();
     }
 
     @Then("returns a valid response_employeeName")
@@ -125,7 +122,6 @@ public class StepDefinitionsEmployee {
     public void i_try_to_fetch_an_employee_who_is_not_registered() {
         request = RestAssured.given();
         response = request.get("/searchName/Lekshmi");
-        statusCode = response.getStatusCode();
     }
 
     @Then("returns a not found response")
@@ -138,7 +134,6 @@ public class StepDefinitionsEmployee {
     public void i_delete_an_employee() {
         request = RestAssured.given();
         response = request.get("/getEmployee/1");
-        statusCode = response.getStatusCode();
     }
 
     @Then("return a success message")
