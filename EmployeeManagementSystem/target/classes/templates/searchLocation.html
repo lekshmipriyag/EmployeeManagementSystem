@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+    <title>Search Employee Location</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      /* Always set the map height explicitly to define the size of the div
+       * element that contains the map. */
+      #map {
+        height: 100%;
+      }
+      /* Optional: Makes the sample page fill the window. */
+      html, body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+
+
+
+
+    </style>
+</head>
+<body>
+<form action="#" th:action="@{/findLocation}" th:object="${employee}" method="post">
+    <h2>Search Employee Location</h2>
+
+    <p>Employee Number: <input type="text" name="employeeNumber" id="employeeNumber"/></p>
+    <p><input type="hidden" name="city" id="city" value="campbellfield"/></p>
+    <p><input type="button" value="Search" id="searchByLocation" onmouseover="initMap()"/>
+        <input type="reset" value="Reset"/></p>
+</form>
+<div id="productsJson"></div>
+<div id="map" style="width: 500px; height: 400px;"></div>
+
+</script>
+<script>
+
+      function initMap() {
+        var geocoder;
+        var map;
+        var address = document.getElementById("city").value;
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        geocoder = new google.maps.Geocoder();
+        codeAddress(geocoder, map, address);
+      }
+
+      function codeAddress(geocoder, map, address) {
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === 'OK') {
+            map.setCenter(results[0].geometry.location);
+            var marker = new google.maps.Marker({
+              map: map,
+              position: results[0].geometry.location
+            });
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+
+
+
+
+</script>
+<script async defer
+        src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDIwFTtQEdA2fM4L1tlk-Nbr270xsco-D0&callback=initMap">
+</script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script>
+
+$(document).ready(function(){
+  $('#map').hide();
+});
+
+$('#searchByLocation').click(function (e) {
+    e.preventDefault();
+    var employeeNumber = $("#employeeNumber").val();
+    if(employeeNumber == ""){
+    alert('Please Enter Employee Number');
+    $('#map').hide();
+    }else{
+    var employeeUrl = "http://localhost:8081/employee/searchEmployeeNumber/"+employeeNumber;
+
+    $.ajax({
+     type: 'GET',
+     url: employeeUrl,
+     dataType: 'json',
+     contentType: 'application/json; charset=utf-8',
+     complete: function (resultData) {
+     var data = resultData.responseJSON.employeeList;
+    // alert(data);s
+     if(data == null){
+     $("#city").val("Not Found");
+     $('#map').hide();
+     alert('Employee details not found');
+     }else{
+     console.log(resultData.responseJSON.employeeList);
+           $.each(data, function (key, value) {
+           var cityName = value.city;
+            $("#city").val(cityName);
+            $('#map').show();
+            });
+     }
+     }
+});
+  $('#map').show();
+ }
+});
+
+</script>
+</body>
+</html>
+
+
+
+
+

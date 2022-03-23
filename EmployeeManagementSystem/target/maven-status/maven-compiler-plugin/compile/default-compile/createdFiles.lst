@@ -3,6 +3,7 @@ com\EmployeeManagement\controller\RegisterController.class
 com\EmployeeManagement\config\SpringFoxConfig.class
 com\EmployeeManagement\repository\DepartmentRepository.class
 com\EmployeeManagement\exceptions\EmployeeExceptionHandler.class
+com\EmployeeManagement\controller\GoogleMapController.class
 com\EmployeeManagement\model\Department.class
 com\EmployeeManagement\service\EmployeeService.class
 com\EmployeeManagement\EmployeeManagementApplication.class

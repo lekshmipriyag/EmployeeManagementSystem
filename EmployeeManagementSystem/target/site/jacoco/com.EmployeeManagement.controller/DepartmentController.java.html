@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>DepartmentController.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">EmployeeManagementSystem</a> &gt; <a href="index.source.html" class="el_package">com.EmployeeManagement.controller</a> &gt; <span class="el_source">DepartmentController.java</span></div><h1>DepartmentController.java</h1><pre class="source lang-java linenums">package com.EmployeeManagement.controller;
+
+import com.EmployeeManagement.model.Department;
+import com.EmployeeManagement.model.ResponseData;
+import com.EmployeeManagement.service.DepartmentService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+
+
+@RestController
+@RequestMapping(&quot;/department&quot;)
+<span class="nc" id="L15">public class DepartmentController {</span>
+
+    @Autowired
+    DepartmentService departmentService;
+
+
+    @RequestMapping(&quot;/welcome&quot;)
+    public String welcome() {
+<span class="nc" id="L23">        return &quot;Welcome to version 3 with Microservices&quot;;</span>
+    }
+
+
+    @RequestMapping(method = RequestMethod.POST, value = &quot;/addDepartments&quot;)
+    public ResponseEntity&lt;ResponseData&gt; addDepartment(Department department) {
+<span class="nc" id="L29">        return departmentService.addDepartment(department);</span>
+    }
+
+    @RequestMapping(method = RequestMethod.PUT, value = &quot;/updateDepartment/{id}&quot;)
+    public ResponseEntity&lt;ResponseData&gt; updateDepartmentDetails(@PathVariable int id, @Valid @RequestBody Department department) {
+<span class="nc" id="L34">        return departmentService.updateDepartmentDetails(id, department);</span>
+    }
+
+
+    @RequestMapping(&quot;/getAllDepartment&quot;)
+    public ResponseEntity&lt;ResponseData&gt; getAllDepartment() {
+<span class="nc" id="L40">        return departmentService.getAllDepartmentDetails();</span>
+    }
+
+    @RequestMapping(&quot;/searchDepartment/{name}&quot;)
+    public ResponseEntity&lt;ResponseData&gt; getDepartmentByName(@PathVariable String name) {
+<span class="nc" id="L45">        return departmentService.getDepartmentByName(name);</span>
+    }
+
+    @RequestMapping(method = RequestMethod.DELETE, value = &quot;/deleteDepartment/{id}&quot;)
+    public ResponseEntity&lt;ResponseData&gt; deleteDepartment(@PathVariable(&quot;id&quot;) int id) {
+<span class="nc" id="L50">        return departmentService.removeDepartment(id);</span>
+    }
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.7.202105040129</span></div></body></html>

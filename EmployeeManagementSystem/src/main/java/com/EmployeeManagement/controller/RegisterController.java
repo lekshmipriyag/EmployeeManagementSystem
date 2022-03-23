@@ -13,6 +13,7 @@ import javax.validation.Valid;
 import java.util.List;
 
 @RestController
+@CrossOrigin(origins = "*")
 @RequestMapping("/employee")
 @Api(value="Employee Management System", protocols = "http")
 public class RegisterController {
@@ -48,6 +49,7 @@ public class RegisterController {
     public ResponseEntity<ResponseData> getEmployeeByName(@PathVariable String name)  {
         return employeeService.getEmployeeByName(name);
     }
+
 
     @RequestMapping("/searchEmployeeNumber/{number}")
     public ResponseEntity<ResponseData> getEmployeeByNumber(@PathVariable String number)  {
