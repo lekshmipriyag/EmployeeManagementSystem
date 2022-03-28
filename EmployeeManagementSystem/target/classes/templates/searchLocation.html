@@ -25,10 +25,10 @@
 <body>
 <form action="#" th:action="@{/findLocation}" th:object="${employee}" method="post">
     <h2>Search Employee Location</h2>
-
     <p>Employee Number: <input type="text" name="employeeNumber" id="employeeNumber"/></p>
-    <p><input type="hidden" name="city" id="city" value="campbellfield"/></p>
-    <p><input type="button" value="Search" id="searchByLocation" onmouseover="initMap()"/>
+    <p><input type="hidden" name="city" id="city" value="Craigieburn"/></p>
+    <p><input type="hidden" name="employeeURL" th:value= "${employeeURL}" id="employeeURL"  /></p>
+    <p><input type="button" value="Search" id="searchByLocation" onmouseenter="initMap()"/>
         <input type="reset" value="Reset"/></p>
 </form>
 <div id="productsJson"></div>
@@ -84,7 +84,8 @@ $('#searchByLocation').click(function (e) {
     alert('Please Enter Employee Number');
     $('#map').hide();
     }else{
-    var employeeUrl = "http://localhost:8081/employee/searchEmployeeNumber/"+employeeNumber;
+     var searchUrl = $("#employeeURL").val();
+    var employeeUrl = searchUrl+employeeNumber;
 
     $.ajax({
      type: 'GET',
