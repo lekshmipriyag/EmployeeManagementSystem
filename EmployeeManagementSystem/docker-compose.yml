@@ -1,0 +1,32 @@
+version: '3'
+services:
+
+  employee-container:
+    image: employee-management
+    ports:
+      - 8081:8081
+    depends_on:
+      - mysql-db
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 4
+  salary-container:
+    image: employee-salary
+    ports:
+      - 8090:8090
+    depends_on:
+      - mysql-db
+    deploy:
+      restart_policy:
+        condition: on-failure
+        delay: 5s
+        max_attempts: 4
+  mysql-db:
+    image: mysql
+    ports:
+      - 3000:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=password
+      - MYSQL_DATABASE=db_employee
